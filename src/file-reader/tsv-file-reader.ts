@@ -1,4 +1,4 @@
-import {FileReaderInterface} from './file-reader.interface.js';
+import {FileReader} from './file-reader.interface.js';
 import {readFileSync} from 'node:fs';
 import {Offer} from '../types/offer.type.js';
 import {City} from '../types/city.enum.js';
@@ -7,7 +7,7 @@ import {Conveniences} from '../types/conveniences.enum.js';
 import {User} from '../types/user.type.js';
 import {Coordinates} from '../types/coordinates.type.js';
 
-export class TsvFileReader implements FileReaderInterface {
+export class TsvFileReader implements FileReader {
   private rawData = '';
 
   constructor(public readonly filename: string) {
@@ -26,11 +26,11 @@ export class TsvFileReader implements FileReaderInterface {
       .filter((row) => row.trim() !== '')
       .map((line) => line.split('\t'))
       .map(([name, description, date, city, previewImg, images, flagIsPremium, flagIsFavourites, rating, typeHousing, countRooms, countPeople, price, conveniences, author, countComments, coordinates]) => ({
-        name: name,
-        description: description,
+        name,
+        description,
         date: new Date(date),
         city: city as City,
-        previewImg: previewImg,
+        previewImg,
         images: images.split(';'),
         flagIsPremium: flagIsPremium as unknown as boolean,
         flagIsFavourites: flagIsFavourites as unknown as boolean,
