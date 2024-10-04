@@ -1,9 +1,9 @@
 import got from 'got';
+import chalk from 'chalk';
 import {Command} from './command.interface.js';
 import {MockServerData} from '../../types/mock-server-data.type.js';
 import TSVOfferGenerator from '../offer-generator/tsv-offer-generator.js';
 import TsvFileWriter from '../../file-writer/tsv-file-writer.js';
-
 
 export class GenerateCommand implements Command {
   public readonly name = '--generate';
@@ -16,7 +16,7 @@ export class GenerateCommand implements Command {
     try {
       this.initialData = await got.get(url).json();
     } catch {
-      console.log(`Can't fetch data from ${url}`);
+      console.error(chalk.red(`Can't fetch data from ${url}`));
       return;
     }
 
