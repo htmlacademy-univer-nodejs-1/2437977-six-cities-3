@@ -1,0 +1,70 @@
+{
+  "api": {
+    "name": [
+      "Ключ к успеху",
+      "Аренда с комфортом",
+      "Аренда без границ",
+      "Выгодная сделка",
+      "Домашний рай"
+    ],
+    "description": [
+      "Мы предлагаем квартиры и дома в лучших районах города, чтобы вы могли наслаждаться комфортом и уютом своего нового дома.",
+      "С нами вы сможете найти идеальный вариант для жизни, работы или отдыха, где бы вы ни находились.",
+      "Мы предлагаем широкий спектр объектов недвижимости для аренды, начиная от уютных студий и заканчивая просторными домами.",
+      "Если вы ищете аренду с комфортом, обратитесь к нам, и мы поможем вам найти идеальное жилье!",
+      "Не упустите возможность стать частью нашего домашнего рая и наслаждаться уютной атмосферой своего нового дома!"
+    ],
+    "previewImg": [
+      "studio-photos.jpg",
+      "apartment-01.jpg",
+      "apartment-02.jpg",
+      "apartment-03.jpg",
+      "studio-01.jpg"
+    ],
+    "images": [
+      "apartment-01.jpg;apartment-02.jpg;apartment-03.jpg;apartment-small-03.jpg;apartment-small-04.jpg;studio-photos.jpg",
+      "apartment-02.jpg;apartment-03.jpg;apartment-01.jpg;apartment-small-04.jpg;apartment-small-05.jpg;studio-photos.jpg",
+      "studio-photos.jpg;apartment-05.jpg;apartment-06.jpg;apartment-small-07.jpg;apartment-small-08.jpg;studio-photos.jpg",
+      "studio-photos.jpg;apartment-04.jpg;apartment-02.jpg;apartment-03.jpg;apartment-small-09.jpg;apartment-small-04.jpg;",
+      "apartment-04.jpg;apartment-08.jpg;apartment-07.jpg;apartment-small-06.jpg;apartment-small-05.jpg;studio-photos.jpg"
+    ],
+    "price": [
+      "10000",
+      "20000",
+      "15000",
+      "98624",
+      "12345"
+    ],
+    "conveniences": [
+      "Breakfast",
+      "Air_conditioning",
+      "Laptop_friendly_workspace",
+      "Baby_seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "countComments": [
+      "1",
+      "10",
+      "5",
+      "7",
+      "3"
+    ],
+    "author": [
+      "Роланд Дискейн",
+      "Холи Гибни",
+      "Джек Торренс",
+      "Антон Городецкий",
+      "Борис Гесер"
+    ],
+    "coordinates": [
+      "48.85661,2.351499",
+      "50.938361,6.959974",
+      "50.846557,4.351697",
+      "50.846557,4.351697",
+      "53.550341,10.000654",
+      "51.225402,6.776314"
+    ]
+  }
+}

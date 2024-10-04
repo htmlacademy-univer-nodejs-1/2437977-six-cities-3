@@ -11,6 +11,7 @@ export class HelpCommand implements Command {
     chalk.white('\tКоманды:\n'),
     chalk.green('\t--help:                      '), chalk.bgMagenta('# выводит этот текст\n'),
     chalk.yellow('\t--version:                   '), chalk.bgMagenta('# выводит номер версии\n'),
-    chalk.red('\t--import <path>:             '), chalk.bgMagenta('# импортирует данные из файла с расширением TSV\n'));
+    chalk.red('\t--import <path>:             '), chalk.bgMagenta('# импортирует данные из файла с расширением TSV\n'),
+    chalk.blue('\t--generate <n> <path> <url>  '), chalk.bgMagenta('# генерирует произвольное количество тестовых данных'));
   }
 }
