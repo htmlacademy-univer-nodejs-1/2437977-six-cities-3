@@ -5,7 +5,9 @@ import {Housing} from '../../types/housing.enum.js';
 import {City} from '../../types/city.enum.js';
 import {MockServerData} from '../../types/mock-server-data.type.js';
 import {OfferGenerator} from './offer-generator.interface.js';
-import {getRandomItems} from '../../helpers/getRandomItems.js';
+import {User} from '../../types/user.type.js';
+import {Conveniences} from '../../types/conveniences.enum.js';
+import {Coordinates} from '../../types/coordinates.type.js';
 
 const MIN_PRICE = 100;
 const MAX_PRICE = 100000;
@@ -30,10 +32,18 @@ export default class TSVOfferGenerator implements OfferGenerator {
     const previewImg = getRandomItem<string>(this.mockData.previewImg);
     const price = generateRandomValue(MIN_PRICE, MAX_PRICE).toString();
     const images = getRandomItem<string>(this.mockData.images);
-    const conveniences = getRandomItems<string>(this.mockData.conveniences);
-    const author = getRandomItem<string>(this.mockData.author);
+    const conveniences = getRandomItem<Conveniences>([
+      Conveniences.Breakfast,
+      Conveniences.Air_conditioning,
+      Conveniences.Fridge,
+      Conveniences.Towels,
+      Conveniences.Baby_seat,
+      Conveniences.Laptop_friendly_workspace,
+      Conveniences.Washer
+    ]);
+    const author = getRandomItem<User>(this.mockData.author);
     const countComments = getRandomItem<string>(this.mockData.countComments);
-    const coordinates = getRandomItem<string>(this.mockData.coordinates);
+    const coordinates = getRandomItem<Coordinates>(this.mockData.coordinates);
 
     return [
       name,
@@ -50,7 +60,10 @@ export default class TSVOfferGenerator implements OfferGenerator {
       countPeople,
       price,
       conveniences,
-      author,
+      author.name,
+      author.email,
+      author.avatar,
+      author.userType,
       countComments,
       coordinates
     ].join('\t');

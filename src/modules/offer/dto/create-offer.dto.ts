@@ -1,5 +1,4 @@
 import {User} from '../../../types/user.type.js';
-import {Coordinates} from '../../../types/coordinates.type.js';
 import {Housing} from '../../../types/housing.enum.js';
 import {Conveniences} from '../../../types/conveniences.enum.js';
 import {City} from '../../../types/city.enum.js';
@@ -21,5 +20,5 @@ export default class CreateOfferDto {
   conveniences!: Conveniences;
   author!: User;
   countComments!: number;
-  coordinates!: Coordinates;
+  coordinates!: string;
 }

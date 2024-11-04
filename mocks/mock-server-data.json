@@ -52,19 +52,54 @@
       "3"
     ],
     "author": [
-      "Роланд Дискейн",
-      "Холи Гибни",
-      "Джек Торренс",
-      "Антон Городецкий",
-      "Борис Гесер"
+      {
+        "name": "Роланд Дискейн",
+        "email": "email@gmail.com",
+        "userType": "pro",
+        "avatar": "https://avatars.example.com/ivan.jpg"
+      },
+      {
+        "name": "Холи Гибни",
+        "email": "email@gmail.com",
+        "userType": "pro",
+        "avatar": "https://avatars.example.com/ivan.jpg"
+      },
+      {
+        "name": "Джек Торренс",
+        "email": "email@gmail.com",
+        "userType": "pro",
+        "avatar": "https://avatars.example.com/ivan.jpg"
+      },
+      {
+        "name": "Антон Городецкий",
+        "email": "email@gmail.com",
+        "userType": "pro",
+        "avatar": "https://avatars.example.com/ivan.jpg"
+      },
+      {
+        "name": "Борис Гесер",
+        "email": "email@gmail.com",
+        "userType": "pro",
+        "avatar": "https://avatars.example.com/ivan.jpg"
+      }
     ],
     "coordinates": [
-      "48.85661,2.351499",
-      "50.938361,6.959974",
-      "50.846557,4.351697",
-      "50.846557,4.351697",
-      "53.550341,10.000654",
-      "51.225402,6.776314"
+      {
+        "latitude": "48.85661",
+        "longitude": "2.351499"
+      },
+      {
+        "latitude": "50.938361",
+        "longitude": "6.959974"
+      },
+      {
+        "latitude": "50.846557",
+        "longitude": "4.351697"
+      },
+      {
+        "latitude": "53.550341",
+        "longitude": "10.000654"
+      }
     ]
   }
 }

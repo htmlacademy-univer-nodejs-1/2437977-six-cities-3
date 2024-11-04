@@ -44,7 +44,8 @@ export class ImportCommand implements Command {
 
     await this.offerService.create({
       ...offer,
-      author: user
+      author: user,
+      coordinates: `${offer.coordinates.latitude},${offer.coordinates.longitude}`
     });
   }
 
