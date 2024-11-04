@@ -21,7 +21,10 @@ export function createOffer(offerData: string): Offer {
     countPeople,
     price,
     conveniences,
-    author,
+    authorName,
+    authorEmail,
+    authorAvatar,
+    authorUserType,
     countComments,
     coordinates
   ] = offerData.replace('\n', '').split('\t');
@@ -39,10 +42,18 @@ export function createOffer(offerData: string): Offer {
     housing: housing as Housing,
     countRooms: countRooms as unknown as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8,
     countPeople: countPeople as unknown as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10,
-    price: Number.parseInt(price, 10),
+    price: +price,
     conveniences: conveniences as Conveniences,
-    author: author as unknown as User,
-    countComments: Number.parseInt(countComments, 10),
-    coordinates: coordinates.split(',') as unknown as Coordinates
+    author: {
+      name: authorName,
+      email: authorEmail,
+      avatar: authorAvatar,
+      userType: authorUserType
+    } as User,
+    countComments: +countComments,
+    coordinates: {
+      latitude: +coordinates.split(',')[0],
+      longitude: +coordinates.split(',')[1]
+    } as Coordinates
   } as Offer;
 }
