@@ -25,7 +25,8 @@
       "node",
     ],
     "lib": [
-      "ESNext"
+      "ESNext",
+      "dom"
     ]
   },
   "include": [

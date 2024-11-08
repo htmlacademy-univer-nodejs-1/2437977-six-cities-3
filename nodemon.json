@@ -1,0 +1,7 @@
+{
+  "watch": [
+    "src"
+  ],
+  "ext": "ts, json",
+  "exec": "node ./dist/main.rest.js | pino-pretty --colorize --translateTime SYS:standard"
+}

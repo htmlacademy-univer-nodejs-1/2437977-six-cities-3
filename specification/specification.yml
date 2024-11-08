@@ -76,14 +76,14 @@ paths:
   /comments?count=50:
     get:
       tags:
-        - comments
+        - comment
       summary: Список комментариев для предложения
       responses:
         200:
           description: Список комментариев для объявления успешно получен
     post:
       tags:
-        - comments
+        - comment
       summary: Добавление комментария
       responses:
         201:
@@ -193,7 +193,7 @@ tags:
     description: Для действий с пользователями
   - name: offers
     description: Действия с объявлениями
-  - name: comments
+  - name: comment
     description: Действия с комментариями
 
 components:
