@@ -55,6 +55,13 @@ paths:
 
   /offers?countRequests=60:
     get:
+      parameters:
+        - name: countRequests
+          in: query
+          description: Количество запрашиваемых предложений (Опционально)
+          required: false
+          schema:
+            type: integer
       tags:
         - offers
       summary: Список предложений по аренде
@@ -80,7 +87,7 @@ paths:
       summary: Список комментариев для предложения
       responses:
         200:
-          description: Список комментариев для объявления успешно получен
+          description: Список комментариев для объявления успешно получен. Если пользователь не вводил количество комментариев, то по умолчанию выводится 50.
     post:
       tags:
         - comment
@@ -111,8 +118,10 @@ paths:
           description: Успешное создание нового пользователя
         400:
           description: Введенные данные не прошли валидацию
+        401:
+          description: Пользователь не авторизован
         409:
-          description: Пользователь с таким email уже существует.
+          description: Пользователь с таким email уже существует
 
 
   /users/login:
@@ -247,6 +256,7 @@ components:
 
         date:
           type: string
+          format: date
           example: '2023.04.09'
 
         city:
@@ -258,7 +268,9 @@ components:
           example: "studio-photos.jpg"
 
         images:
-          type: string
+          type: array
+          items:
+            type: string
           example: [ "apartment-01.jpg;","apartment-02.jpg;"]
 
         flagIsPremium:
