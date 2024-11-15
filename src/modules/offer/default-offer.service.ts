@@ -62,10 +62,6 @@ export default class DefaultOfferService implements OfferService {
     return this.offerModel.find({flagIsPremium: true}).populate('offerId').exec();
   }
 
-  public async getFavorite(): Promise<DocumentType<OfferEntity>[]> {
-    return this.offerModel.find({flagIsFavourites: true}).populate('offerId').exec();
-  }
-
   public async calculationRating(rating: number, newRating: number, countRating: number, offerId: string): Promise<void> {
     await this.offerModel.findByIdAndUpdate(offerId, {rating: (newRating + rating) / countRating}, {new: true}).exec();
   }
