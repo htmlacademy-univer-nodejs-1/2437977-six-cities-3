@@ -20,6 +20,7 @@ export default class Application {
     @inject(Component.AppExceptionFilter) private readonly exceptionFilter: ExceptionFilter,
     @inject(Component.UserController) private readonly userController: BaseController,
     @inject(Component.OfferController) private readonly offerController: BaseController,
+    @inject(Component.CommentController) private readonly commentController: BaseController,
   ) {
     this.server = express();
   }
@@ -54,6 +55,7 @@ export default class Application {
 
     this.server.use('/users', this.userController.router);
     this.server.use('/offers', this.offerController.router);
+    this.server.use('/comments', this.commentController.router);
 
     this.logger.info('Controller completed');
   }
