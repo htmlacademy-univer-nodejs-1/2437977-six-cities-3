@@ -2,7 +2,7 @@ import {
   IsArray,
   IsBoolean,
   IsDateString,
-  IsInt, IsMongoId,
+  IsInt,
   IsNumber,
   IsObject,
   IsString, Length,
@@ -64,8 +64,7 @@ export default class CreateOfferDto {
   @IsString({message: CreateOfferMessages.conveniences.invalidFormat})
     conveniences!: Conveniences;
 
-  @IsMongoId({message: CreateOfferMessages.author.invalidId})
-    author!: User;
+  user!: User;
 
   countComments!: number;
 
