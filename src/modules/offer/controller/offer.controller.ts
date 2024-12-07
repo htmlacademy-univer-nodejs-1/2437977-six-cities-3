@@ -15,6 +15,7 @@ import {CommentRdo} from '../../comment/rdo/comment.rdo.js';
 import {ValidateDtoMiddleware} from '../../../middleware/validate-dto.middleware.js';
 import {ValidateObjectIdMiddleware} from '../../../middleware/validate-objectId.middleware.js';
 import {DocumentExistsMiddleware} from '../../../middleware/document-exists.middleware.js';
+import {PrivateRouteMiddleware} from '../../../middleware/private-root.middleware.js';
 
 @injectable()
 export default class OfferController extends BaseController {
@@ -32,7 +33,10 @@ export default class OfferController extends BaseController {
       path: '/',
       method: HttpMethod.Post,
       handler: this.create,
-      middlewares: [new ValidateDtoMiddleware(CreateOfferDto)]
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new ValidateDtoMiddleware(CreateOfferDto),
+      ]
     });
     this.addRoute({
       path: '/:offerId',
@@ -48,6 +52,7 @@ export default class OfferController extends BaseController {
       method: HttpMethod.Delete,
       handler: this.delete,
       middlewares: [
+        new PrivateRouteMiddleware(),
         new ValidateObjectIdMiddleware('offerId'),
         new DocumentExistsMiddleware(this.offersService, 'Offer', 'offerId'),
       ]
@@ -57,6 +62,7 @@ export default class OfferController extends BaseController {
       method: HttpMethod.Patch,
       handler: this.update,
       middlewares: [
+        new PrivateRouteMiddleware(),
         new ValidateObjectIdMiddleware('offerId'),
         new ValidateDtoMiddleware(UpdateOfferDto),
         new DocumentExistsMiddleware(this.offersService, 'Offer', 'offerId'),
@@ -77,8 +83,8 @@ export default class OfferController extends BaseController {
     this.ok(res, offersToRes);
   }
 
-  public async create({body}: Request<Record<string, unknown>, Record<string, unknown>, CreateOfferDto>, res: Response): Promise<void> {
-    const result = await this.offersService.create(body);
+  public async create({body, user}: Request<Record<string, unknown>, Record<string, unknown>, CreateOfferDto>, res: Response): Promise<void> {
+    const result = await this.offersService.create({ ...body, user: user});
 
     this.created(res, fillDTO(OfferRdo, result));
   }
