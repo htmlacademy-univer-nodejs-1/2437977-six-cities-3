@@ -23,6 +23,8 @@
     "@types/convict": "6.1.6",
     "@types/convict-format-with-validator": "6.0.5",
     "@types/express": "5.0.0",
+    "@types/mime-types": "2.1.4",
+    "@types/multer": "^1.4.12",
     "@types/node": "18.17.17",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
@@ -55,7 +57,10 @@
     "got": "14.4.3",
     "http-status-codes": "2.3.0",
     "inversify": "6.0.2",
-    "mongoose": "^8.7.2",
+    "mime-types": "2.1.35",
+    "mongoose": "8.7.2",
+    "multer": "1.4.5-lts.1",
+    "nanoid": "5.0.9",
     "pino": "9.5.0",
     "reflect-metadata": "0.2.2"
   }
