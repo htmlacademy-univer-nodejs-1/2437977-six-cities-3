@@ -10,6 +10,7 @@ import {getMongoURI} from '../helpers/getMongoURI.js';
 import {ExceptionFilter} from '../exception-filters/exception-filter.interface.js';
 import {BaseController} from '../controller/base-controller.js';
 import {AuthenticateMiddleware} from '../middleware/authenticate.middleware.js';
+import {getFullServerPath} from '../helpers/getFullServerPath.js';
 
 @injectable()
 export default class Application {
@@ -51,7 +52,7 @@ export default class Application {
     const port = this.config.get('PORT');
     this.server.listen(port);
 
-    this.logger.info(`Server started on http://localhost:${this.config.get('PORT')}`);
+    this.logger.info(`Server started on ${getFullServerPath(this.config.get('HOST'), this.config.get('PORT'))}`);
   }
 
   private async _initControllers(){
@@ -71,6 +72,10 @@ export default class Application {
     this.server.use(
       '/upload',
       express.static(this.config.get('UPLOAD_DIRECTORY'))
+    );
+    this.server.use(
+      '/static',
+      express.static(this.config.get('STATIC_DIRECTORY_PATH'))
     );
 
     const authenticateMiddleware = new AuthenticateMiddleware(this.config.get('JWT_SECRET'));

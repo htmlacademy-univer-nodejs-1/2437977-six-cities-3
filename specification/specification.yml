@@ -80,7 +80,7 @@ paths:
         200:
           description: Детальная информация по предложению успешно получена
 
-  /comments?count=50:
+  /offers/{offerId}/comments?count=50:
     get:
       tags:
         - comment
@@ -88,6 +88,7 @@ paths:
       responses:
         200:
           description: Список комментариев для объявления успешно получен. Если пользователь не вводил количество комментариев, то по умолчанию выводится 50.
+
     post:
       tags:
         - comment
@@ -158,7 +159,7 @@ paths:
         401:
           description: Пользователь не авторизован
 
-  /offers/premium:
+  /offers/premium/{city}:
     get:
       tags:
         - offers
@@ -167,7 +168,7 @@ paths:
         200:
           description: Возвращает не более 3 премиальных предложения
 
-  /offers/favorite:
+  /offers/users/favorite:
     get:
       tags:
         - offers
@@ -177,6 +178,8 @@ paths:
           description: Возвращает список избранных предложений
         401:
           description: Пользователь не авторизован
+
+  /offers/{offerId}/favorite:
     post:
       tags:
         - offers
@@ -257,7 +260,7 @@ components:
         date:
           type: string
           format: date
-          example: '2023.04.09'
+          example: '2023-09-21T17:41:15.000Z'
 
         city:
           type: string
@@ -312,8 +315,11 @@ components:
           example: 1
 
         coordinates:
-          type: string
-          example:
+          type: array
+          items:
+            type: number
+            format: float
+          example: [52.370216, 4.895168]
 
     createComments:
       type: object

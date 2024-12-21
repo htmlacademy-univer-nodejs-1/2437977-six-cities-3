@@ -7,7 +7,8 @@ Content-Type: application/json
   "email": "torans@overlook.net",
   "avatar": "torrance.png",
   "name": "Jack Torrance",
-  "password": "shining"
+  "password": "shining",
+  "userType": "pro"
 }
 
 ###
@@ -25,6 +26,6 @@ Content-Type: application/json
 
 ## Проверить токен пользователя
 GET http://localhost:4000/users/login HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRvcmFuc0BvdmVybG9vay5uZXQiLCJpZCI6IjY0NzBiYzM4M2UzMGRiNjc5ZGZhYzJkMiIsImlhdCI6MTY4NTk3NTQ4MiwiZXhwIjoxNjg2MTQ4MjgyfQ.Gq2-B1egouAnMxmXlR2ElVT6wCa97PS6lxzVI8LnGvo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRvcmFuc0BvdmVybG9vay5uZXQiLCJpZCI6IjY1OWFjMzIzN2Y4NGRmNzY0M2MzZmIzYSIsImlhdCI6MTcwNDY0MzEzOCwiZXhwIjoxNzA0ODE1OTM4fQ.Tn2Qw6D7vwcHyz5dy0VBEheF_Xns-OkOqq7drh0-kYE
 
 ###

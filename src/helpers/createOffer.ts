@@ -1,6 +1,5 @@
 import {Offer} from '../types/offer.type.js';
 import {User} from '../types/user.type.js';
-import {Coordinates} from '../types/coordinates.type.js';
 import {Conveniences} from '../types/conveniences.enum.js';
 import {Housing} from '../types/housing.enum.js';
 import {City} from '../types/city.enum.js';
@@ -51,9 +50,6 @@ export function createOffer(offerData: string): Offer {
       userType: authorUserType
     } as User,
     countComments: +countComments,
-    coordinates: {
-      latitude: +coordinates.split(',')[0],
-      longitude: +coordinates.split(',')[1]
-    } as Coordinates
+    coordinates: coordinates.split(',') as unknown as number[],
   } as Offer;
 }

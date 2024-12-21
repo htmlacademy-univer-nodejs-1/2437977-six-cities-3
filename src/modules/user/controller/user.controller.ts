@@ -1,6 +1,5 @@
 import {inject, injectable} from 'inversify';
 import {Response, Request} from 'express';
-import {Config} from 'convict';
 import {StatusCodes} from 'http-status-codes';
 import {BaseController} from '../../../controller/base-controller.js';
 import {Logger} from '../../../logger/logger.interface.js';
@@ -19,15 +18,16 @@ import LoggedUserRdo from '../rdo/logged-user.rdo.js';
 import {JWT_ALGORITHM} from '../user.constant.js';
 import {createJWT} from '../../../helpers/createJWT.js';
 import {UnknownRecord} from '../../../types/unknown-record.type.js';
+import {Config} from '../../../config/config.interface.js';
 
 @injectable()
 export class UserController extends BaseController {
   constructor(
     @inject(Component.Logger) protected readonly logger: Logger,
     @inject(Component.UserService) private readonly userService: UserService,
-    @inject(Component.Config) private readonly configService: Config<RestSchema>,
+    @inject(Component.Config) protected readonly configService: Config<RestSchema>,
   ) {
-    super(logger);
+    super(logger, configService);
     this.logger.info('Register routes for UserController');
     this.addRoute({path: '/register', method: HttpMethod.Post, handler: this.create});
     this.addRoute({path: '/login', method: HttpMethod.Post, handler: this.login});
@@ -90,10 +90,10 @@ export class UserController extends BaseController {
       }
     );
 
-    this.ok(res, fillDTO(LoggedUserRdo, {
-      email: user.email,
+    this.ok(res, {
+      ...fillDTO(LoggedUserRdo, user),
       token
-    }));
+    });
   }
 
   public async uploadAvatar(req: Request, res: Response) {

@@ -7,7 +7,6 @@ import {MockServerData} from '../../types/mock-server-data.type.js';
 import {OfferGenerator} from './offer-generator.interface.js';
 import {User} from '../../types/user.type.js';
 import {Conveniences} from '../../types/conveniences.enum.js';
-import {Coordinates} from '../../types/coordinates.type.js';
 
 const MIN_PRICE = 100;
 const MAX_PRICE = 100000;
@@ -43,7 +42,7 @@ export default class TSVOfferGenerator implements OfferGenerator {
     ]);
     const author = getRandomItem<User>(this.mockData.author);
     const countComments = getRandomItem<string>(this.mockData.countComments);
-    const coordinates = getRandomItem<Coordinates>(this.mockData.coordinates);
+    const coordinates = getRandomItem<number>(this.mockData.coordinates);
 
     return [
       name,
