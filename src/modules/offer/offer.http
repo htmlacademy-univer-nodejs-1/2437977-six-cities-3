@@ -80,5 +80,3 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRvcmFuc0BvdmVybG9vay5uZ
 GET http://localhost:4000/offers/users/favorite
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRvcmFuc0BvdmVybG9vay5uZXQiLCJpZCI6IjY1OWFjMzIzN2Y4NGRmNzY0M2MzZmIzYSIsImlhdCI6MTcwNDY0MzEzOCwiZXhwIjoxNzA0ODE1OTM4fQ.Tn2Qw6D7vwcHyz5dy0VBEheF_Xns-OkOqq7drh0-kYE
-
-###

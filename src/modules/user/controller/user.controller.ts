@@ -19,6 +19,7 @@ import {JWT_ALGORITHM} from '../user.constant.js';
 import {createJWT} from '../../../helpers/createJWT.js';
 import {UnknownRecord} from '../../../types/unknown-record.type.js';
 import {Config} from '../../../config/config.interface.js';
+import UploadAvatarResponse from '../rdo/upload-avatar.response.js';
 
 @injectable()
 export class UserController extends BaseController {
@@ -97,15 +98,17 @@ export class UserController extends BaseController {
   }
 
   public async uploadAvatar(req: Request, res: Response) {
-    this.created(res, {
-      filepath: req.file?.path
-    });
+    const {userId} = req.params;
+    const uploadFile = {avatar: req.file?.filename};
+
+    await this.userService.updateById(userId, uploadFile);
+    this.created(res, fillDTO(UploadAvatarResponse, uploadFile));
   }
 
   public async checkAuthenticate({user: {email}}: Request, res: Response) {
     const foundedUser = await this.userService.findByEmail(email);
 
-    if (! foundedUser) {
+    if (!foundedUser) {
       throw new HttpError(
         StatusCodes.UNAUTHORIZED,
         'Unauthorized',
