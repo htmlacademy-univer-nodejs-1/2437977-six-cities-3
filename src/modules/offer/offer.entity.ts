@@ -1,10 +1,8 @@
-import typegoose, {defaultClasses, getModelForClass} from '@typegoose/typegoose';
-import {Offer} from '../../types/offer.type.js';
+import typegoose, {defaultClasses, getModelForClass, Ref} from '@typegoose/typegoose';
 import {City} from '../../types/city.enum.js';
 import {Housing} from '../../types/housing.enum.js';
 import {Conveniences} from '../../types/conveniences.enum.js';
 import {UserEntity} from '../user/user.entity.js';
-import {User} from '../../types/user.type.js';
 import {Coordinates} from '../../types/coordinates.type.js';
 
 const {prop, modelOptions} = typegoose;
@@ -20,7 +18,7 @@ export interface OfferEntity extends defaultClasses.Base {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export class OfferEntity extends defaultClasses.TimeStamps implements Offer {
+export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({
     required: true,
     minlength: [10, 'Min length for name is 10'],
@@ -94,7 +92,7 @@ export class OfferEntity extends defaultClasses.TimeStamps implements Offer {
     required: true,
     ref: UserEntity,
   })
-  public author!: User;
+  public userId!: Ref<UserEntity>;
 
   @prop({default: 0})
   public countComments!: number;
