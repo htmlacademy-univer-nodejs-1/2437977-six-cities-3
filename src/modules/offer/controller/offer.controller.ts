@@ -16,6 +16,7 @@ import {ValidateDtoMiddleware} from '../../../middleware/validate-dto.middleware
 import {ValidateObjectIdMiddleware} from '../../../middleware/validate-objectId.middleware.js';
 import {DocumentExistsMiddleware} from '../../../middleware/document-exists.middleware.js';
 import {PrivateRouteMiddleware} from '../../../middleware/private-root.middleware.js';
+import {UnknownRecord} from '../../../types/unknown-record.type.js';
 
 @injectable()
 export default class OfferController extends BaseController {
@@ -83,8 +84,8 @@ export default class OfferController extends BaseController {
     this.ok(res, offersToRes);
   }
 
-  public async create({body, user}: Request<Record<string, unknown>, Record<string, unknown>, CreateOfferDto>, res: Response): Promise<void> {
-    const result = await this.offersService.create({ ...body, user: user});
+  public async create({body, user}: Request<UnknownRecord, UnknownRecord, CreateOfferDto>, res: Response): Promise<void> {
+    const result = await this.offersService.create({...body, userId: user.id});
 
     this.created(res, fillDTO(OfferRdo, result));
   }
@@ -97,7 +98,7 @@ export default class OfferController extends BaseController {
     this.noContent(res, offer);
   }
 
-  public async update({body, params}: Request<ParamOfferId, unknown, UpdateOfferDto>, res: Response): Promise<void> {
+  public async update({body, params}: Request<ParamOfferId, UnknownRecord, UpdateOfferDto>, res: Response): Promise<void> {
     const updatedOffer = await this.offersService.updateById(params.offerId, body);
 
     this.ok(res, fillDTO(OfferRdo, updatedOffer));
@@ -110,8 +111,9 @@ export default class OfferController extends BaseController {
     this.ok(res, fillDTO(OfferRdo, offer));
   }
 
-  public async getComments({ params }: Request<ParamOfferId>, res: Response): Promise<void> {
+  public async getComments({params}: Request<ParamOfferId, UnknownRecord, UnknownRecord>, res: Response): Promise<void> {
     const comments = await this.commentService.findByOfferId(params.offerId);
+
     this.ok(res, fillDTO(CommentRdo, comments));
   }
 }

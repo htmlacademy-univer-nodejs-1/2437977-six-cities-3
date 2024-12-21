@@ -1,3 +1,4 @@
+import cors from 'cors';
 import {inject, injectable} from 'inversify';
 import express, {Express} from 'express';
 import {Config} from '../config/config.interface.js';
@@ -18,10 +19,12 @@ export default class Application {
     @inject(Component.Logger) private readonly logger: Logger,
     @inject(Component.Config) private readonly config: Config<RestSchema>,
     @inject(Component.DatabaseClient) private readonly databaseClient: DatabaseClient,
-    @inject(Component.AppExceptionFilter) private readonly exceptionFilter: ExceptionFilter,
+    @inject(Component.HttpErrorExceptionFilter) private readonly httpErrorExceptionFilter: ExceptionFilter,
     @inject(Component.UserController) private readonly userController: BaseController,
     @inject(Component.OfferController) private readonly offerController: BaseController,
     @inject(Component.CommentController) private readonly commentController: BaseController,
+    @inject(Component.BaseExceptionFilter) private readonly baseExceptionFilter: ExceptionFilter,
+    @inject(Component.ValidationExceptionFilter) private readonly validationExceptionFilter: ExceptionFilter,
   ) {
     this.server = express();
   }
@@ -72,6 +75,7 @@ export default class Application {
 
     const authenticateMiddleware = new AuthenticateMiddleware(this.config.get('JWT_SECRET'));
     this.server.use(authenticateMiddleware.execute.bind(authenticateMiddleware));
+    this.server.use(cors());
 
     this.logger.info('Middleware init completed');
   }
@@ -79,7 +83,9 @@ export default class Application {
   private async _initExceptionFilters() {
     this.logger.info('Init exception filters');
 
-    this.server.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
+    this.server.use(this.validationExceptionFilter.catch.bind(this.validationExceptionFilter));
+    this.server.use(this.httpErrorExceptionFilter.catch.bind(this.httpErrorExceptionFilter));
+    this.server.use(this.baseExceptionFilter.catch.bind(this.baseExceptionFilter));
 
     this.logger.info('Exception filters completed');
   }
