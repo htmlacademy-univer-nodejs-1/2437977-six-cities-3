@@ -4,8 +4,9 @@ import {
   IsDateString,
   IsInt,
   IsMongoId,
-  IsNumber, IsObject, IsOptional,
-  IsString, Length,
+  IsNumber,
+  IsOptional,
+  IsString,
   MaxLength,
   MinLength
 } from 'class-validator';
@@ -52,7 +53,6 @@ export default class UpdateOfferDto {
 
   @IsOptional()
   @IsNumber({}, {message: CreateOfferMessages.rating.invalidFormat})
-  @Length(1, 5, {message: CreateOfferMessages.rating.lengthField})
     rating?: 1 | 2 | 3 | 4 | 5;
 
   @IsOptional()
@@ -61,17 +61,14 @@ export default class UpdateOfferDto {
 
   @IsOptional()
   @IsInt({message: CreateOfferMessages.countRooms.invalidFormat})
-  @Length(1, 8, {message: CreateOfferMessages.countRooms.lengthField})
     countRooms?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
   @IsOptional()
   @IsInt({message: CreateOfferMessages.countPeople.invalidFormat})
-  @Length(1, 10, {message: CreateOfferMessages.countPeople.lengthField})
     countPeople?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
   @IsOptional()
   @IsNumber({}, {message: CreateOfferMessages.price.invalidFormat})
-  @Length(100, 100000, {message: CreateOfferMessages.price.lengthField})
     price?: number;
 
   @IsOptional()
@@ -86,6 +83,6 @@ export default class UpdateOfferDto {
     countComments?: number;
 
   @IsOptional()
-  @IsObject({message: CreateOfferMessages.coordinates.invalidFormat})
-    coordinates?: string;
+  @IsArray({message: CreateOfferMessages.coordinates.invalidFormat})
+    coordinates?: number[];
 }

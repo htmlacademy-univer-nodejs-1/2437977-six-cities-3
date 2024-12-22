@@ -4,8 +4,7 @@ import {
   IsDateString,
   IsInt,
   IsNumber,
-  IsObject,
-  IsString, Length,
+  IsString,
   MaxLength,
   MinLength
 } from 'class-validator';
@@ -42,22 +41,18 @@ export default class CreateOfferDto {
   public flagIsFavourites!: boolean;
 
   @IsNumber({}, {message: CreateOfferMessages.rating.invalidFormat})
-  @Length(1, 5, {message: CreateOfferMessages.rating.lengthField})
   public rating!: 1 | 2 | 3 | 4 | 5;
 
   @IsString({message: CreateOfferMessages.housing.invalidFormat})
   public housing!: Housing;
 
   @IsInt({message: CreateOfferMessages.countRooms.invalidFormat})
-  @Length(1, 8, {message: CreateOfferMessages.countRooms.lengthField})
   public countRooms!: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
   @IsInt({message: CreateOfferMessages.countPeople.invalidFormat})
-  @Length(1, 10, {message: CreateOfferMessages.countPeople.lengthField})
   public countPeople!: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
   @IsNumber({}, {message: CreateOfferMessages.price.invalidFormat})
-  @Length(100, 100000, {message: CreateOfferMessages.price.lengthField})
   public price!: number;
 
   @IsString({message: CreateOfferMessages.conveniences.invalidFormat})
@@ -67,6 +62,6 @@ export default class CreateOfferDto {
 
   public countComments!: number;
 
-  @IsObject({message: CreateOfferMessages.coordinates.invalidFormat})
-  public coordinates!: string;
+  @IsArray({message: CreateOfferMessages.coordinates.invalidFormat})
+  public coordinates!: number[];
 }

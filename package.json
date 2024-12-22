@@ -45,7 +45,7 @@
     "npm": ">=8"
   },
   "dependencies": {
-    "@typegoose/typegoose": "12.8.0",
+    "@typegoose/typegoose": "11.1.0",
     "chalk": "5.3.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.1",
@@ -61,7 +61,7 @@
     "inversify": "6.0.2",
     "jose": "5.9.6",
     "mime-types": "2.1.35",
-    "mongoose": "8.7.2",
+    "mongoose": "7.1.0",
     "multer": "1.4.5-lts.1",
     "nanoid": "5.0.9",
     "pino": "9.5.0",

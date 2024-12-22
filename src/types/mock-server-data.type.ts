@@ -1,6 +1,5 @@
 import {User} from './user.type.js';
 import {Conveniences} from './conveniences.enum.js';
-import {Coordinates} from './coordinates.type.js';
 
 export type MockServerData = {
   name: string[];
@@ -10,5 +9,5 @@ export type MockServerData = {
   conveniences: Conveniences[];
   countComments: string[];
   author: User[];
-  coordinates: Coordinates[];
+  coordinates: number[];
 }

@@ -1,7 +1,6 @@
 import {Conveniences} from './conveniences.enum.js';
 import {User} from './user.type.js';
 import {City} from './city.enum.js';
-import {Coordinates} from './coordinates.type.js';
 import {Housing} from './housing.enum.js';
 
 export type Offer = {
@@ -21,5 +20,5 @@ export type Offer = {
   conveniences: Conveniences;
   author: User;
   countComments: number;
-  coordinates: Coordinates;
+  coordinates: number[];
 }
